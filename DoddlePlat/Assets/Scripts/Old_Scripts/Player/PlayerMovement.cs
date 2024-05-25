@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,80 +6,72 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed; // Velocidad de movimiento lateral
-    [SerializeField] private float jumpForce; // Fuerza de salto
-    [SerializeField] private bool canDoubleJump = true;
+    [Header("Movement Values")]
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float moveInput;
+    [SerializeField] private int extraJumpValue;
+    private int _extraJumpCount;
     
+    [Header("Ground Detection")]
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadious;
+    [SerializeField] private LayerMask whatIsGround;
     private bool _isGrounded;
 
-    [SerializeField] private float raycastLenght;
-
     private Rigidbody2D _rigidbody2D;
-    private Collider2D _collider2D;
-
+        
+    private bool _facingRight = true;
+    
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _collider2D = GetComponent<BoxCollider2D>();
+
+        _extraJumpCount = extraJumpValue;
     }
 
-    void Update()
-    { // Movimiento lateral
-        float moveInput = Input.GetAxis("Horizontal");
-        _rigidbody2D.velocity = new Vector2(moveInput * moveSpeed, _rigidbody2D.velocity.y);
-
-        // Salto
-        if (Input.GetButtonDown("Jump") && _isGrounded)
-        { 
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
-        }
-        else if (Input.GetButtonDown("Jump") && !_isGrounded && canDoubleJump)
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount > 0)
         {
-            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
-            canDoubleJump = false;
+            _rigidbody2D.velocity = Vector2.up * jumpForce;
+            _extraJumpCount--;
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount == 0 && _isGrounded)
+        {
+            _rigidbody2D.velocity = Vector2.up * jumpForce;
+        }
+
+        if (_isGrounded)
+        {
+            _extraJumpCount = extraJumpValue;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadious, whatIsGround);
         
-        //GroundRaycast();
-    }
+        moveInput = Input.GetAxis("Horizontal");
+        _rigidbody2D.velocity = new Vector2(moveInput * speed, _rigidbody2D.velocity.y);
 
-    void GroundRaycast()
-    {
-        RaycastHit2D hitGround = Physics2D.Raycast(transform.position, Vector2.down);
-        Debug.DrawRay(transform.position, Vector2.down * raycastLenght, Color.red);
-
-        if (hitGround.collider.GameObject().CompareTag("Ground"))
+        if (!_facingRight && moveInput > 0)
         {
-            _isGrounded = true;
-            
-            if (!canDoubleJump)
-            {
-                canDoubleJump = true;
-            }
+            Flip();
         }
-        else
+        else if (_facingRight && moveInput < 0)
         {
-            _isGrounded = false;
+            Flip();
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void Flip()
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = true;
-            
-            if (!canDoubleJump)
-            {
-                canDoubleJump = true;
-            }
-        }
-    }
+        _facingRight = !_facingRight;
+        
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            _isGrounded = false;
-        }
     }
 }
