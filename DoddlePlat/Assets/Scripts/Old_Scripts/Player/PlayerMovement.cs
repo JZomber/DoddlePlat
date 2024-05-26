@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Values")]
     [SerializeField] private float speed;
     [SerializeField] private float jumpForce;
-    [SerializeField] private float moveInput;
+    private float _moveInput;
     [SerializeField] private int extraJumpValue;
     private int _extraJumpCount;
     
@@ -23,7 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Taking Damage")]
     public bool canMove;
-    [SerializeField] private Vector2 knockBackDir;
+    [SerializeField] private Vector2 knockbackDir;
+    [SerializeField] private int  bounceForce;
     
     
     [Header("Animation")] 
@@ -49,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount > 0 && !_isGrounded && canMove)
+        if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount > 0 && !_isGrounded && canMove) // Input de salto
         {
             _rigidbody2D.velocity = Vector2.up * jumpForce;
             animator.SetBool("isJumping", true);
@@ -68,17 +69,17 @@ public class PlayerMovement : MonoBehaviour
     {
         if (canMove)
         {
-            moveInput = Input.GetAxis("Horizontal");
-            _rigidbody2D.velocity = new Vector2(moveInput * speed, _rigidbody2D.velocity.y);
+            _moveInput = Input.GetAxis("Horizontal");
+            _rigidbody2D.velocity = new Vector2(_moveInput * speed, _rigidbody2D.velocity.y);
             
-            animator.SetFloat("Speed", Mathf.Abs(moveInput));
+            animator.SetFloat("Speed", Mathf.Abs(_moveInput));
         }
 
-        if (!_facingRight && moveInput > 0)
+        if (!_facingRight && _moveInput > 0)
         {
             Flip();
         }
-        else if (_facingRight && moveInput < 0)
+        else if (_facingRight && _moveInput < 0)
         {
             Flip();
         }
@@ -96,29 +97,36 @@ public class PlayerMovement : MonoBehaviour
                 if (!wasGrounded)
                 {
                     onLandEvent.Invoke();
-                    _extraJumpCount = extraJumpValue;
+                    _extraJumpCount = extraJumpValue; // Reinicia el número de saltos extras al tocar un layer que cuente como "Piso"
                 }
             }
         }
     }
 
-    public void KnockBackPoint(Vector2 origin)
+    public void KnockBack(GameObject gameObject) // KnockBack cuando el player recibe un ataque enemigo
     {
-        _rigidbody2D.velocity = new Vector2(-knockBackDir.x * origin.x + 1, knockBackDir.y);
+        if (_facingRight)
+        {
+            _rigidbody2D.velocity = new Vector2(-knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
+        }
+        else
+        {
+            _rigidbody2D.velocity = new Vector2(knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
+        }
     }
 
-    public void Bounce()
+    public void Bounce() // Cuando el player colisiona con un "WeakPoint" enemigo
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, knockBackDir.y);
+        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, bounceForce);
     }
 
-    public void OnLanding()
+    public void OnLanding() // Cada vez que toca el suelo o una plataforma
     {
         animator.SetBool("isJumping", false);
         animator.SetBool("isGrounded", true);
     }
 
-    private void Flip()
+    private void Flip() // Invierte el sprite del player según la dirección
     {
         _facingRight = !_facingRight;
         

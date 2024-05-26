@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -17,41 +18,75 @@ public class PlayerDamage : MonoBehaviour
 
     private Vector2 _playerSpawn;
 
+    private Collider2D _collider2D;
+
+    private bool _weakPointHit;
+
+    private bool _isHit;
+
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
 
         _playerSpawn = gameObject.transform.position;
         
-        animator.SetTrigger("isRespawn");
+        animator.SetBool("isAlive", true);
+
+        _collider2D = GetComponent<Collider2D>();
     }
 
-    private void TakeDamage(Vector2 origin)
+    private void TakeDamage(GameObject gameObject) // Recibir daño al colisionar con enemigos
     {
         animator.SetTrigger("isHit");
-        StartCoroutine(LoseControl(1f));
-        playerMovement.KnockBackPoint(origin);
+        LoseControl();
+        playerMovement.KnockBack(gameObject);
     }
 
-    private IEnumerator LoseControl(float delay)
+    private void LoseControl() // El player no puede moverse
     {
         playerMovement.canMove = false;
+        animator.SetBool("isAlive", false);
+        
+        StartCoroutine(Respawn(2f));
+    }
+
+    private IEnumerator Respawn(float delay) // Re-posición del player + animación
+    {
         yield return new WaitForSeconds(delay);
-        Respawn();
-    }
-
-    private void Respawn()
-    {
         gameObject.transform.position = _playerSpawn;
+        
         animator.SetTrigger("isRespawn");
+        animator.SetBool("isAlive", true);
+        
         playerMovement.canMove = true;
+        _collider2D.enabled = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other) // Colisión Player > Enemigos
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && !_weakPointHit && !_isHit)
         {
-            TakeDamage(other.GetContact(0).normal);
+            _isHit = true;
+            TakeDamage(other.gameObject);
+            StartCoroutine(CoolDownHit(1f));
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) // Colisión Player > Punto débil (Enemigo)
+    {
+        if (other.gameObject.CompareTag("WeakPoint"))
+        {
+            _weakPointHit = true;
+            playerMovement.Bounce();
+            other.GameObject().GetComponentInParent<EnemyDamage>().TakeDamage();
+            StartCoroutine(CoolDownHit(1f));
+        }
+    }
+
+    private IEnumerator CoolDownHit(float delay) // CoolDown antes de que se pueda colisionar nuevamente
+    {
+        yield return new WaitForSeconds(delay);
+        _weakPointHit = false;
+        _isHit = false;
     }
 }

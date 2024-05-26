@@ -1,16 +1,25 @@
-    using System;
-    using System.Collections;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyDamage : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [Header("Enemy Colliders")]
+    [SerializeField] private Collider2D _EnemyCollider;
+    [SerializeField] private Collider2D _weakPointCollider;
+
+    [Header("Animation")]
+    [SerializeField] private Animator _animator;
+    
+    [Header("Enemy Stats")]
+    [SerializeField] private int lives;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        _animator.SetBool("isAlive", true);
     }
 
     // Update is called once per frame
@@ -19,15 +28,24 @@ public class EnemyDamage : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    public void TakeDamage() // Recibir daño por player
     {
-        if (other.gameObject.CompareTag("PlayerStomp"))
+        _animator.SetTrigger("isHit");
+        lives--;
+
+        if (lives <= 0)
         {
-            if (other.GetContact(0).normal.y <= -0.9)
-            {
-                animator.SetTrigger("isHit");
-                other.gameObject.GetComponent<PlayerMovement>().Bounce();
-            }
+            StartCoroutine(EnemyDeath(2f));
         }
+    }
+
+    private IEnumerator EnemyDeath(float delay) // Ejecuta animación de muerte, desactiva colisiones y GameObject
+    {
+        _EnemyCollider.enabled = false;
+        _weakPointCollider.enabled = false;
+        _animator.SetBool("isAlive", false);
+
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
     }
 }
