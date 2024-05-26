@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Enemy
+  - PlayerStomp
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 1898744547
+    locked: 0
+  - name: Player
+    uniqueID: 4179897399
+    locked: 0
+  - name: Enemies
+    uniqueID: 451678577
     locked: 0

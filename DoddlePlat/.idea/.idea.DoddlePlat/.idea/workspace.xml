@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9c0208-dcc1-4063-b4c6-0608ff998aa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/PlayerAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/PlayerAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_DoubleJump.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_DoubleJump.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Fall.anim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Fall.anim.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Hit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Hit.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Jump.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Spawn.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Spawn.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Appearing (96x96).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Appearing (96x96).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Double Jump (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Double Jump (32x32).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Fall (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Fall (32x32).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Hit (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Hit (32x32).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Idle (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Idle (32x32).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Jump (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Jump (32x32).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Run (32x32).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Main Characters/Mask Dude/Run (32x32).png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Collected.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Collected.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Orange.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Orange.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
@@ -25,6 +29,10 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Enemy/EnemyDamage.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerDamage.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -100,7 +108,7 @@
       <option name="presentableId" value="Default" />
       <updated>1716482234376</updated>
       <workItem from="1716482242921" duration="5031000" />
-      <workItem from="1716662909262" duration="3912000" />
+      <workItem from="1716662909262" duration="22827000" />
     </task>
     <servers />
   </component>
