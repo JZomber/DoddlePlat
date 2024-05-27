@@ -5,22 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9c0208-dcc1-4063-b4c6-0608ff998aa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat_Hit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat_Hit.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Plant/Plant.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Plant/Plant.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Plant/Plant_Hit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Plant/Plant_Hit.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Bat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Bat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Plant.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Plant.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Turtle.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Turtle.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/PlayerAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/PlayerAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_DoubleJump.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_DoubleJump.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Fall.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Fall.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Hit.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Hit.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Jump.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Jump.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Spawn.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Animation/Player_Spawn.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Player/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Collected.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Collected.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Orange.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Items/Fruits/Orange.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerDamage.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerMovement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,25 +40,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Player&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "Enemies",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\juans\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\juans\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\juans\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\juans\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\DecompilerCache",
+      "C:\\Users\\juans\\AppData\\Roaming\\JetBrains\\Rider2024.1\\resharper-host\\SourcesCache",
+      "C:\\Users\\juans\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.29f1\Editor\Unity.exe" />
@@ -109,6 +107,7 @@
       <updated>1716482234376</updated>
       <workItem from="1716482242921" duration="5031000" />
       <workItem from="1716662909262" duration="22827000" />
+      <workItem from="1716840444165" duration="3661000" />
     </task>
     <servers />
   </component>

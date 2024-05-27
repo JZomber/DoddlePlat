@@ -203,7 +203,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6.5
   jumpForce: 10
-  moveInput: 0
   extraJumpValue: 1
   groundCheck: {fileID: 7091476809527565956}
   checkRadious: 0.1
@@ -211,7 +210,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 3072
   canMove: 1
-  knockbackDir: {x: 0.4, y: 8}
+  knockbackDir: {x: 0, y: 8}
   bounceForce: 10
   animator: {fileID: -7849429848089256564}
   onLandEvent:

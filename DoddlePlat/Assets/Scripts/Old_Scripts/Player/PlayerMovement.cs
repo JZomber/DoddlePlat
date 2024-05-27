@@ -63,6 +63,12 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("isJumping", true);
             animator.SetBool("isGrounded", false);
         }
+        
+        if (!canMove)
+        {
+            _moveInput = 0;
+            animator.SetFloat("Speed", _moveInput);
+        }
     }
 
     void FixedUpdate()
@@ -109,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         {
             _rigidbody2D.velocity = new Vector2(-knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
         }
-        else
+        else 
         {
             _rigidbody2D.velocity = new Vector2(knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
         }
