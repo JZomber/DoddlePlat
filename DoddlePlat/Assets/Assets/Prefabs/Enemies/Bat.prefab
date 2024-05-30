@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 2933823630586433972}
   - component: {fileID: 1319792760299410055}
   - component: {fileID: 6060717869015760404}
+  - component: {fileID: 544010421254000921}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -207,5 +208,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _EnemyCollider: {fileID: 2933823630586433972}
   _weakPointCollider: {fileID: 9203812743363146667}
-  _animator: {fileID: 1319792760299410055}
+  animator: {fileID: 1319792760299410055}
   lives: 1
+  currentLives: 0
+--- !u!114 &544010421254000921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559733023831538343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8b2b2b35ed7741bd0cc80df507071, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 5581901078718569147, guid: edebe4361e3dc0449aa68f4b84618fd2, type: 3}
+  detectionRange: 2
+  speed: 2.2

@@ -18,11 +18,13 @@ public class PlayerDamage : MonoBehaviour
 
     private Vector2 _playerSpawn;
 
-    private Collider2D _collider2D;
-
     private bool _weakPointHit;
 
     private bool _isHit;
+    
+    private BoxCollider2D _boxCollider2D;
+
+    private Rigidbody2D _rigidbody2D;
 
     private void Start()
     {
@@ -31,8 +33,10 @@ public class PlayerDamage : MonoBehaviour
         _playerSpawn = gameObject.transform.position;
         
         animator.SetBool("isAlive", true);
+        
+        _boxCollider2D = GetComponent<BoxCollider2D>();
 
-        _collider2D = GetComponent<Collider2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void TakeDamage(GameObject gameObject) // Recibir daño al colisionar con enemigos
@@ -46,6 +50,7 @@ public class PlayerDamage : MonoBehaviour
     {
         playerMovement.canMove = false;
         animator.SetBool("isAlive", false);
+        _boxCollider2D.enabled = false;
         
         StartCoroutine(Respawn(2f));
     }
@@ -53,8 +58,10 @@ public class PlayerDamage : MonoBehaviour
     private IEnumerator Respawn(float delay) // Re-posición del player + animación
     {
         yield return new WaitForSeconds(delay);
-        
+
+        _rigidbody2D.velocity = new Vector2(0, 0);
         gameObject.transform.position = _playerSpawn;
+        _boxCollider2D.enabled = true;
         
         animator.SetTrigger("isRespawn");
         animator.SetBool("isAlive", true);

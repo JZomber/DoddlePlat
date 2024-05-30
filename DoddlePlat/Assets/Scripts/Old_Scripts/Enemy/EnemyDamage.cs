@@ -11,15 +11,18 @@ public class EnemyDamage : MonoBehaviour
     [SerializeField] private Collider2D _weakPointCollider;
 
     [Header("Animation")]
-    [SerializeField] private Animator _animator;
+    [SerializeField] public Animator animator;
     
     [Header("Enemy Stats")]
     [SerializeField] private int lives;
+    [HideInInspector] public int currentLives;
 
     // Start is called before the first frame update
     void Start()
     {
-        _animator.SetBool("isAlive", true);
+        animator.SetBool("isAlive", true);
+
+        currentLives = lives;
     }
 
     // Update is called once per frame
@@ -30,10 +33,10 @@ public class EnemyDamage : MonoBehaviour
 
     public void TakeDamage() // Recibir daño por player
     {
-        _animator.SetTrigger("isHit");
-        lives--;
+        animator.SetTrigger("isHit");
+        currentLives--;
 
-        if (lives <= 0)
+        if (currentLives <= 0)
         {
             StartCoroutine(EnemyDeath(2f));
         }
@@ -43,7 +46,7 @@ public class EnemyDamage : MonoBehaviour
     {
         _EnemyCollider.enabled = false;
         _weakPointCollider.enabled = false;
-        _animator.SetBool("isAlive", false);
+        animator.SetBool("isAlive", false);
 
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);

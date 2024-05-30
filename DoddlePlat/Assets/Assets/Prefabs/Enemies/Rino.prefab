@@ -207,5 +207,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _EnemyCollider: {fileID: 1443190953877549852}
   _weakPointCollider: {fileID: 4854577516014494139}
-  _animator: {fileID: 8995006656663023034}
+  animator: {fileID: 8995006656663023034}
   lives: 3
+  currentLives: 0

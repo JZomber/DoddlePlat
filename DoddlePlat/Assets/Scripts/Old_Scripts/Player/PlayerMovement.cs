@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     
     private Rigidbody2D _rigidbody2D;
-        
+    
     private bool _facingRight = true;
     
     public UnityEvent onLandEvent;
@@ -42,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
         _extraJumpCount = extraJumpValue;
 
+        
         if (onLandEvent == null)
         {
             onLandEvent = new UnityEvent();
