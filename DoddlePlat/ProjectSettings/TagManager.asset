@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - WeakPoint
   - EnemyAttack
+  - Border
   layers:
   - Default
   - TransparentFX
