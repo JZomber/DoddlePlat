@@ -232,7 +232,7 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  detectionRange: -10
+  detectionRange: -15
   raycastOrigin: {fileID: 266305221125124967}
   shootOrigin: {fileID: 7107518797809258955}
   bullet: {fileID: 428869692178307042, guid: 8797e79166c85234bb5b4d5ee97f053a, type: 3}
