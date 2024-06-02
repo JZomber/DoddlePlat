@@ -6,10 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="da9c0208-dcc1-4063-b4c6-0608ff998aa3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Rino/Rino.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Rino.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Other/Transition.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Pixel Adventure 1 [Enviroment]/Other/Transition.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level_1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ScreenMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ScreenMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ScreenVictory.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ScreenVictory.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +37,7 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Enemies&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Scenes&amp;&amp;Levels&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -100,6 +103,8 @@
       <workItem from="1716662909262" duration="22827000" />
       <workItem from="1716840444165" duration="3661000" />
       <workItem from="1717178395120" duration="3737000" />
+      <workItem from="1717351173520" duration="1421000" />
+      <workItem from="1717353323967" duration="1548000" />
     </task>
     <servers />
   </component>
