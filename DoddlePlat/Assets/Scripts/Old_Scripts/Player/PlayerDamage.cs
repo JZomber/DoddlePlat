@@ -26,6 +26,10 @@ public class PlayerDamage : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
 
+    private LevelManager _levelManager;
+
+    private int _playerLives;
+
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -37,6 +41,15 @@ public class PlayerDamage : MonoBehaviour
         _boxCollider2D = GetComponent<BoxCollider2D>();
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
+
+        _levelManager = FindObjectOfType<LevelManager>();
+
+        _playerLives = _levelManager.playerLives;
+    }
+
+    public void PlayerSpawnRelocate()
+    {
+        _playerSpawn = gameObject.transform.position;
     }
 
     private void TakeDamage(GameObject gameObject) // Recibir daño al colisionar con enemigos
@@ -44,6 +57,7 @@ public class PlayerDamage : MonoBehaviour
         animator.SetTrigger("isHit");
         LoseControl();
         playerMovement.KnockBack(gameObject);
+        _playerLives--;
     }
 
     private void LoseControl() // El player no puede moverse
@@ -59,14 +73,17 @@ public class PlayerDamage : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        _rigidbody2D.velocity = new Vector2(0, 0);
-        gameObject.transform.position = _playerSpawn;
-        _boxCollider2D.enabled = true;
+        if (_playerLives > 0)
+        {
+            _rigidbody2D.velocity = new Vector2(0, 0);
+            gameObject.transform.position = _playerSpawn;
+            _boxCollider2D.enabled = true;
         
-        animator.SetTrigger("isRespawn");
-        animator.SetBool("isAlive", true);
+            animator.SetTrigger("isRespawn");
+            animator.SetBool("isAlive", true);
 
-        StartCoroutine(PlayerCanMove(1f));
+            StartCoroutine(PlayerCanMove(1f));
+        }
     }
     
     private IEnumerator CoolDownHit(float delay) // CoolDown antes de que se pueda colisionar nuevamente
@@ -89,6 +106,7 @@ public class PlayerDamage : MonoBehaviour
             _isHit = true;
             TakeDamage(other.gameObject);
             StartCoroutine(CoolDownHit(1f));
+            _levelManager.PlayerTakeDamage();
         }
     }
 
@@ -107,8 +125,7 @@ public class PlayerDamage : MonoBehaviour
             _isHit = true;
             TakeDamage(other.gameObject);
             StartCoroutine(CoolDownHit(1f));
+            _levelManager.PlayerTakeDamage();
         }
     }
-
-    
 }
