@@ -9,6 +9,7 @@ TagManager:
   - WeakPoint
   - EnemyAttack
   - Border
+  - Portal
   layers:
   - Default
   - TransparentFX
