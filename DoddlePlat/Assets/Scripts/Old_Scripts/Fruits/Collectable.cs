@@ -9,6 +9,8 @@ public class Collectable : MonoBehaviour
 
     private LevelManager _levelManager;
 
+    private bool _collected;
+
     private void Start()
     {
         _levelManager = FindObjectOfType<LevelManager>();
@@ -16,11 +18,12 @@ public class Collectable : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_collected)
         {
             _animator.SetTrigger("isCollected");
             StartCoroutine(SelfDeactivate(0.5f));
-            _levelManager.fruitCounter++;
+            _levelManager.FruitCollected();
+            _collected = true;
         }
     }
 

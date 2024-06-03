@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject player; //Referencia al player
     public int playerLives;
     private int _playerCurrentLives;
+    [SerializeField] private TMP_Text playerLivesText;
+
+    [SerializeField] private GameObject bossRino;
+    [SerializeField] private GameObject bossUI;
+    [SerializeField] private TMP_Text bossLivesText;
+    private int _rinoCurrentLives;
+    private bool _isBossBattle;
     
     [SerializeField] private GameObject mainCamera; //Referencia a la camara
     
@@ -43,6 +51,7 @@ public class LevelManager : MonoBehaviour
         fruitCounter = 0;
         
         _playerCurrentLives = playerLives;
+        playerLivesText.SetText(_playerCurrentLives.ToString());
         
         //============================================================
         
@@ -78,42 +87,82 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (fruitCounter >= 5)
-        {
-            portal.SetActive(true);
-        }
-
-        if (_playerCurrentLives <= 0)
-        {
-            StartCoroutine(DefeatScreen(1.5f));
-        }
+        
     }
     
     public void TpWaypoint() //Posiciones a donde llevar al player cada vez que termina una sala
     {
-        player.transform.position = playerWaypoints[_indexPlayerWaypoint].transform.position;
+        if (_isBossBattle)
+        {
+            StartCoroutine(VictoryScreen(1.5f));
+            player.SetActive(false);
+        }
+        else
+        {
+            player.transform.position = playerWaypoints[_indexPlayerWaypoint].transform.position;
         
-        player.GetComponent<PlayerDamage>().PlayerSpawnRelocate();
+            player.GetComponent<PlayerDamage>().PlayerSpawnRelocate();
         
-        //============================================================
+            //============================================================
 
-        mainCamera.transform.position = cameraWaypoints[_indexCameraWaypoint].transform.position;
+            mainCamera.transform.position = cameraWaypoints[_indexCameraWaypoint].transform.position;
         
-        portal.transform.position = portalWaypoints[_indexPortalWaypoint].transform.position;
+            portal.transform.position = portalWaypoints[_indexPortalWaypoint].transform.position;
         
-        //============================================================
+            //============================================================
         
-        _indexPlayerWaypoint++;
-        _indexCameraWaypoint++;
-        _indexPortalWaypoint++;
+            _indexPlayerWaypoint++;
+            _indexCameraWaypoint++;
+            _indexPortalWaypoint++;
         
-        fruitCounter = 0;
-        portal.SetActive(false);
+            fruitCounter = 0;
+            portal.SetActive(false);
+        }
+        
+        if (_indexPlayerWaypoint == _totalPlayerWaypoints)
+        {
+            BossBattle();
+            _isBossBattle = true;
+        }
+    }
+
+    private void BossBattle()
+    {
+        _rinoCurrentLives = bossRino.GetComponent<EnemyDamage>().currentLives;
+        bossUI.SetActive(true);
+        bossLivesText.SetText(_rinoCurrentLives.ToString());
     }
 
     public void PlayerTakeDamage()
     {
         _playerCurrentLives--;
+        playerLivesText.SetText(_playerCurrentLives.ToString());
+        
+        if (_playerCurrentLives <= 0)
+        {
+            StartCoroutine(DefeatScreen(1.5f));
+        }
+    }
+
+    public void BossTakeDamage()
+    {
+        _rinoCurrentLives--;
+        bossLivesText.SetText(_rinoCurrentLives.ToString());
+
+        if (_rinoCurrentLives <= 0)
+        {
+            portal.SetActive(true);
+        }
+    }
+
+    public void FruitCollected()
+    {
+        fruitCounter++;
+        
+        if (fruitCounter >= 5)
+        {
+            portal.SetActive(true);
+        }
     }
     
     public IEnumerator VictoryScreen(float delay) //Pantalla de victoria

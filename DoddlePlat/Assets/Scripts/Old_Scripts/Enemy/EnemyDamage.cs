@@ -16,6 +16,9 @@ public class EnemyDamage : MonoBehaviour
     [Header("Enemy Stats")]
     [SerializeField] private int lives;
     [HideInInspector] public int currentLives;
+    [SerializeField] private bool BossEnemy;
+
+    private LevelManager _levelManager;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,8 @@ public class EnemyDamage : MonoBehaviour
         animator.SetBool("isAlive", true);
 
         currentLives = lives;
+
+        _levelManager = FindObjectOfType<LevelManager>();
     }
 
     // Update is called once per frame
@@ -35,6 +40,11 @@ public class EnemyDamage : MonoBehaviour
     {
         animator.SetTrigger("isHit");
         currentLives--;
+
+        if (BossEnemy)
+        {
+            _levelManager.BossTakeDamage();
+        }
 
         if (currentLives <= 0)
         {

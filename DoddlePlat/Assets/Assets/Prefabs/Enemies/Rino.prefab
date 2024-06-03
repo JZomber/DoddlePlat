@@ -87,7 +87,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3689776, y: 0.022884797}
+  m_Size: {x: 0.4526554, y: 0.022884797}
   m_EdgeRadius: 0
 --- !u!1 &5936513628992226300
 GameObject:
@@ -265,6 +265,7 @@ MonoBehaviour:
   animator: {fileID: 8995006656663023034}
   lives: 5
   currentLives: 0
+  BossEnemy: 1
 --- !u!114 &4669721535741499354
 MonoBehaviour:
   m_ObjectHideFlags: 0
