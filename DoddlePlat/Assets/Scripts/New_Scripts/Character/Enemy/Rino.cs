@@ -12,8 +12,7 @@ public class Rino : MonoBehaviour, IDamageable
 
     private float _currentSpeed;
     
-    
-    [Header("Detección & Ataque")]
+    [Header("Detection & Attack")]
     [SerializeField] private LayerMask playerLayer; // Capa del jugador
     [SerializeField] private float detectionRange;
     [SerializeField] private GameObject raycastOrigin;
@@ -22,12 +21,10 @@ public class Rino : MonoBehaviour, IDamageable
     [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private Collider2D weakEnemyCollider;
 
-    [Header("Animation")]
+    [Header("Animation")] 
+    [SerializeField] private AnimatorEnemyData animatorData;
     [SerializeField] private Animator animator;
 
-    private const string s_IsAlive = "isAlive";
-    private const string s_IsHIt = "isHit";
-    private const string s_PlayerDetected = "playerDetected";
     private const string s_WallHit = "wallHit";
 
     private bool _isAlive = true;
@@ -47,7 +44,7 @@ public class Rino : MonoBehaviour, IDamageable
     {
         _currentSpeed = speed;
         
-        animator.SetBool(s_IsAlive, _isAlive);
+        animator.SetBool(animatorData.s_alive, _isAlive);
     }
 
     // Update is called once per frame
@@ -57,12 +54,12 @@ public class Rino : MonoBehaviour, IDamageable
         {
             if (PlayerDetection(detectionRange))
             {
-                animator.SetBool(s_PlayerDetected, _playerDetected);
+                animator.SetBool(animatorData.s_playerDetected, _playerDetected);
                 _isRunning = true;
             }
             else
             {
-                animator.SetBool(s_PlayerDetected, false);
+                animator.SetBool(animatorData.s_playerDetected, false);
             }
         }
         else
@@ -142,7 +139,7 @@ public class Rino : MonoBehaviour, IDamageable
         if (other.gameObject.CompareTag("Border"))
         {
             animator.SetTrigger(s_WallHit);
-            animator.SetBool(s_PlayerDetected, false);
+            animator.SetBool(animatorData.s_playerDetected, false);
 
             if (!_wallCollided)
             {
@@ -162,7 +159,7 @@ public class Rino : MonoBehaviour, IDamageable
     {
         if (_isAlive)
         {
-            animator.SetTrigger(s_IsHIt);
+            animator.SetTrigger(animatorData.s_hit);
             lives--;
             
             if (lives <= 0)
@@ -178,7 +175,7 @@ public class Rino : MonoBehaviour, IDamageable
         _isRunning = false;
         enemyCollider.enabled = false;
         weakEnemyCollider.enabled = false;
-        animator.SetBool(s_IsAlive, false);
+        animator.SetBool(animatorData.s_alive, false);
         _rigidbody2D.velocity = new Vector2(0, 0);
         _rigidbody2D.isKinematic = true;
         

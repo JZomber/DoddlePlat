@@ -18,20 +18,17 @@ public class Bat : MonoBehaviour, IDamageable
     [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private Collider2D weakEnemyCollider;
 
-    [Header("Animation")]
+    [Header("Animation")] 
+    [SerializeField] private AnimatorEnemyData animatorData;
     [SerializeField] private Animator animator;
 
-    private const string s_IsAlive = "isAlive";
-    private const string s_IsHIt = "isHit";
-    private const string s_PlayerDetected = "playerDetected";
-
     private bool _isAlive = true;
-    private bool _isHit;
-    private bool _playerDetected;
+    //private bool _isHit;
+    private bool _isPlayerDetected;
 
     private void Start()
     {
-        animator.SetBool(s_IsAlive, _isAlive);
+        animator.SetBool(animatorData.s_alive, _isAlive);
     }
 
     private void Update()
@@ -48,7 +45,7 @@ public class Bat : MonoBehaviour, IDamageable
         if (_distance < detectionRange*2)
         {
             Attack();
-            _playerDetected = true;
+            _isPlayerDetected = true;
         }
     }
 
@@ -56,14 +53,14 @@ public class Bat : MonoBehaviour, IDamageable
     {
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         
-        animator.SetBool(s_PlayerDetected, _playerDetected);
+        animator.SetBool(animatorData.s_playerDetected, _isPlayerDetected);
     }
     
     private void EnemyTakeDamage()
     {
         if (_isAlive)
         {
-            animator.SetTrigger(s_IsHIt);
+            animator.SetTrigger(animatorData.s_hit);
             lives--;
 
             if (lives <= 0)
@@ -78,7 +75,7 @@ public class Bat : MonoBehaviour, IDamageable
     {
         enemyCollider.enabled = false;
         weakEnemyCollider.enabled = false;
-        animator.SetBool(s_IsAlive, false);
+        animator.SetBool(animatorData.s_alive, false);
         
         yield return new WaitForSeconds(delay);
         

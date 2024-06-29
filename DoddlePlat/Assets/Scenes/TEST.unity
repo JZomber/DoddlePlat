@@ -7674,7 +7674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8559733023831538343, guid: 757d151436f7ffc45821735616a40248, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 757d151436f7ffc45821735616a40248, type: 3}
@@ -8400,6 +8400,10 @@ PrefabInstance:
     - target: {fileID: 5936513628992226300, guid: f1d3c4d1cde20ea4d91ba592d04ba334, type: 3}
       propertyPath: m_Name
       value: _Rino
+      objectReference: {fileID: 0}
+    - target: {fileID: 5936513628992226300, guid: f1d3c4d1cde20ea4d91ba592d04ba334, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1d3c4d1cde20ea4d91ba592d04ba334, type: 3}

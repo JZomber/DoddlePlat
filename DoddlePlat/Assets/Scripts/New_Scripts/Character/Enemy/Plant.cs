@@ -6,24 +6,19 @@ public class Plant : MonoBehaviour, IDamageable
 {
     [Header("Enemy Stats")]
     [SerializeField] private int lives;
-    
-    [Header("Detección & Ataque")]
-    [SerializeField] private LayerMask playerLayer; // Capa del jugador
-    [SerializeField] private float detectionRange;
+
+    [Header("Detection & Attack")] 
+    [SerializeField] private RangedEnemyData rangedData;
     [SerializeField] private GameObject raycastOrigin;
     [SerializeField] private Transform shootOrigin;
-    [SerializeField] private GameObject bullet;
     
     [Header("Enemy Colliders")]
     [SerializeField] private Collider2D enemyCollider;
     [SerializeField] private Collider2D weakEnemyCollider;
 
-    [Header("Animation")]
+    [Header("Animation")] 
+    [SerializeField] private AnimatorEnemyData animatorData;
     [SerializeField] private Animator animator;
-
-    private const string s_IsAlive = "isAlive";
-    private const string s_IsHIt = "isHit";
-    private const string s_PlayerDetected = "playerDetected";
 
     private bool _isAlive = true;
     private bool _isHit;
@@ -31,20 +26,20 @@ public class Plant : MonoBehaviour, IDamageable
     
     private void Start()
     {
-        animator.SetBool(s_IsAlive, _isAlive);
+        animator.SetBool(animatorData.s_alive, _isAlive);
     }
     
     void Update()
     {
         if (_isAlive)
         {
-            if (PlayerDetection(detectionRange))
+            if (PlayerDetection(rangedData.detectionRange))
             {
-                animator.SetBool(s_PlayerDetected, _playerDetected);
+                animator.SetBool(animatorData.s_playerDetected, _playerDetected);
             }
             else
             {
-                animator.SetBool(s_PlayerDetected, false);
+                animator.SetBool(animatorData.s_playerDetected, false);
             }
         }
     }
@@ -54,7 +49,7 @@ public class Plant : MonoBehaviour, IDamageable
         bool value = false;
         
         // Lanzar un raycast hacia adelante para detectar al jugador
-        RaycastHit2D raycast  = Physics2D.Raycast(raycastOrigin.transform.position, transform.right, range, playerLayer);
+        RaycastHit2D raycast  = Physics2D.Raycast(raycastOrigin.transform.position, transform.right, range, rangedData.playerLayer);
 
         // Si el jugador está dentro del rango y el temporizador entre ataques ha pasado
         if (raycast.collider)
@@ -63,7 +58,7 @@ public class Plant : MonoBehaviour, IDamageable
             if (_playerDetected)
             {
                 value = true;
-                Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * detectionRange, Color.green);
+                Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * rangedData.detectionRange, Color.green);
             }
             else
             {
@@ -72,7 +67,7 @@ public class Plant : MonoBehaviour, IDamageable
         }
         else
         {
-            Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * detectionRange, Color.red);
+            Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * rangedData.detectionRange, Color.red);
         }
         
         return value;
@@ -82,14 +77,14 @@ public class Plant : MonoBehaviour, IDamageable
     {
         var rotation = shootOrigin.rotation;
         rotation *= Quaternion.Euler(0, 0, -90);
-        Instantiate(bullet, shootOrigin.position, rotation);
+        Instantiate(rangedData.bulletPrefab, shootOrigin.position, rotation);
     }
     
     private void EnemyTakeDamage()
     {
         if (_isAlive)
         {
-            animator.SetTrigger(s_IsHIt);
+            animator.SetTrigger(animatorData.s_hit);
             lives--;
 
             if (lives <= 0)
@@ -104,7 +99,7 @@ public class Plant : MonoBehaviour, IDamageable
     {
         enemyCollider.enabled = false;
         weakEnemyCollider.enabled = false;
-        animator.SetBool(s_IsAlive, false);
+        animator.SetBool(animatorData.s_alive, false);
         
         yield return new WaitForSeconds(delay);
         
@@ -119,6 +114,6 @@ public class Plant : MonoBehaviour, IDamageable
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.magenta;
-        Gizmos.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * detectionRange);
+        Gizmos.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * rangedData.detectionRange);
     }
 }

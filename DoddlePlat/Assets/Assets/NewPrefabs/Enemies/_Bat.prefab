@@ -211,4 +211,5 @@ MonoBehaviour:
   target: {fileID: 0}
   enemyCollider: {fileID: 2933823630586433972}
   weakEnemyCollider: {fileID: 9203812743363146667}
+  animatorData: {fileID: 11400000, guid: 16b276747396c91429cc85263388874b, type: 2}
   animator: {fileID: 1319792760299410055}
