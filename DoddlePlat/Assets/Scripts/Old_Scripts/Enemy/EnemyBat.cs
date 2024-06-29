@@ -37,7 +37,7 @@ public class EnemyBat : MonoBehaviour
                 
             if (_distance < detectionRange*2)
             {
-                transform.position = Vector2.MoveTowards(this.transform.position, target.transform.position, speed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
                 
                 _enemyDamage.animator.SetBool("playerDetected", true);
             }

@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class PlayerDamage : MonoBehaviour
+public class PlayerDamage : MonoBehaviour, IDamageable
 {
     [Header("Player Movement")] 
     [SerializeField] private PlayerMovement playerMovement;
@@ -30,6 +30,8 @@ public class PlayerDamage : MonoBehaviour
 
     private int _playerLives;
 
+    private GameObject _enemyRef;
+
     private void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
@@ -51,15 +53,15 @@ public class PlayerDamage : MonoBehaviour
     {
         _playerSpawn = gameObject.transform.position;
     }
-
-    private void TakeDamage(GameObject gameObject) // Recibir daño al colisionar con enemigos
-    {
-        animator.SetTrigger("isHit");
-        LoseControl();
-        playerMovement.KnockBack(gameObject);
-        _playerLives--;
-    }
-
+    
+    public void TakeDamage() // El player recibe daño
+        {
+            animator.SetTrigger("isHit");
+            LoseControl();
+            playerMovement.KnockBack(_enemyRef);
+            _playerLives--;
+            _enemyRef = null;
+        }
     private void LoseControl() // El player no puede moverse
     {
         playerMovement.canMove = false;
@@ -104,7 +106,10 @@ public class PlayerDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && !_weakPointHit && !_isHit)
         {
             _isHit = true;
-            TakeDamage(other.gameObject);
+            
+            _enemyRef = other.gameObject;
+            TakeDamage();
+            
             StartCoroutine(CoolDownHit(1f));
             _levelManager.PlayerTakeDamage();
         }
@@ -116,16 +121,24 @@ public class PlayerDamage : MonoBehaviour
         {
             _weakPointHit = true;
             playerMovement.Bounce();
-            other.GameObject().GetComponentInParent<EnemyDamage>().TakeDamage();
+
+            other.gameObject.TryGetComponentInParent(out IDamageable damageableObject);
+            damageableObject.TakeDamage();
+            
             StartCoroutine(CoolDownHit(1f));
         }
 
-        if (other.gameObject.CompareTag("EnemyAttack") && !_isHit)
+        if (other.gameObject.CompareTag("EnemyAttack") && !_isHit) // Colisión Player > Ataque enemigo (Ej. bullet)
         {
             _isHit = true;
-            TakeDamage(other.gameObject);
+            _enemyRef = other.gameObject;
+            TakeDamage();
+            
             StartCoroutine(CoolDownHit(1f));
+            
             _levelManager.PlayerTakeDamage();
         }
     }
+
+    
 }
