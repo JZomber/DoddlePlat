@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da9c0208-dcc1-4063-b4c6-0608ff998aa3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.DoddlePlat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Prefabs/Enemies/Animation/Bat/Bat.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Enemy/EnemyBat.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Enemy/EnemyBat.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerDamage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Player/PlayerDamage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Fruits/Collectable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Old_Scripts/Fruits/Collectable.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <workItem from="1717178395120" duration="3737000" />
       <workItem from="1717351173520" duration="1421000" />
       <workItem from="1717353323967" duration="1548000" />
-      <workItem from="1719607826872" duration="14626000" />
+      <workItem from="1719607826872" duration="14994000" />
     </task>
     <servers />
   </component>

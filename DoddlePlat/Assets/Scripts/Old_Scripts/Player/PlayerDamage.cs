@@ -138,6 +138,12 @@ public class PlayerDamage : MonoBehaviour, IDamageable
             
             _levelManager.PlayerTakeDamage();
         }
+
+        if (other.gameObject.CompareTag("Collectable")) // Colisión player > (item) Recolectable
+        {
+            other.gameObject.TryGetComponentInParent(out ICollectable collectable);
+            collectable.CollectItem();
+        }
     }
 
     

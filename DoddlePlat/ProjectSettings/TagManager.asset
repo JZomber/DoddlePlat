@@ -10,6 +10,7 @@ TagManager:
   - EnemyAttack
   - Border
   - Portal
+  - Collectable
   layers:
   - Default
   - TransparentFX

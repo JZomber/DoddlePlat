@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class Collectable : MonoBehaviour, ICollectable
 {
     [SerializeField] private Animator _animator;
 
@@ -16,20 +16,20 @@ public class Collectable : MonoBehaviour
         _levelManager = FindObjectOfType<LevelManager>();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private IEnumerator SelfDeactivate(float delay)
     {
-        if (other.CompareTag("Player") && !_collected)
+        yield return new WaitForSeconds(delay);
+        gameObject.SetActive(false);
+    }
+
+    public void CollectItem()
+    {
+        if (!_collected)
         {
             _animator.SetTrigger("isCollected");
             StartCoroutine(SelfDeactivate(0.5f));
             _levelManager.FruitCollected();
             _collected = true;
         }
-    }
-
-    private IEnumerator SelfDeactivate(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        gameObject.SetActive(false);
     }
 }
