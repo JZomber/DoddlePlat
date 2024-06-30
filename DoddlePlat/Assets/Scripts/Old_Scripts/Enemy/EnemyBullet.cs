@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public float speed;
-    private Rigidbody2D _rigidbody2D;
+    [SerializeField] private float speed;
+    [SerializeField] private Rigidbody2D rigidbody2D;
     
     // Start is called before the first frame update
     void Start()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
-        _rigidbody2D.velocity = transform.up * speed;
+        rigidbody2D.velocity = transform.up * speed;
     }
 
     // Update is called once per frame

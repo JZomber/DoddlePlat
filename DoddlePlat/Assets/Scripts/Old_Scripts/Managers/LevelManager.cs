@@ -128,7 +128,7 @@ public class LevelManager : MonoBehaviour
 
     private void BossBattle()
     {
-        _rinoCurrentLives = bossRino.GetComponent<EnemyDamage>().currentLives;
+        _rinoCurrentLives = bossRino.GetComponent<Rino>().Lives;
         bossUI.SetActive(true);
         bossLivesText.SetText(_rinoCurrentLives.ToString());
     }

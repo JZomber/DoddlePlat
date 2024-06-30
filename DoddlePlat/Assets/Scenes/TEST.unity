@@ -586,11 +586,6 @@ Transform:
   m_Father: {fileID: 2095629459}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &190918714 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5936513628992226300, guid: 46cf7a32f2bb3594ab9b7ec8829c7712, type: 3}
-  m_PrefabInstance: {fileID: 5936513629212070674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265489269
 GameObject:
   m_ObjectHideFlags: 0
@@ -6299,6 +6294,11 @@ Transform:
   m_Father: {fileID: 511833891}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &759594852 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5936513628992226300, guid: f1d3c4d1cde20ea4d91ba592d04ba334, type: 3}
+  m_PrefabInstance: {fileID: 1447223057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &772493841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8800,7 +8800,7 @@ MonoBehaviour:
   player: {fileID: 1637675673}
   playerLives: 5
   playerLivesText: {fileID: 1668232881}
-  bossRino: {fileID: 190918714}
+  bossRino: {fileID: 759594852}
   bossUI: {fileID: 1708885270}
   bossLivesText: {fileID: 1304155821}
   mainCamera: {fileID: 519420028}

@@ -10,6 +10,8 @@ public class Rino : MonoBehaviour, IDamageable
     [SerializeField] private float speed;
     [SerializeField] private float knockbackForce;
 
+    [HideInInspector] public int Lives => lives;
+
     private float _currentSpeed;
     
     [Header("Detection & Attack")]
