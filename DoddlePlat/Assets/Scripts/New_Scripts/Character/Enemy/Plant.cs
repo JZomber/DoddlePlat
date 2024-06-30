@@ -1,32 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Plant : MonoBehaviour, IDamageable
+public class Plant : RangedEnemy, IDamageable
 {
-    [Header("Enemy Stats")]
-    [SerializeField] private int lives;
-
-    [Header("Detection & Attack")] 
-    [SerializeField] private RangedEnemyData rangedData;
-    [SerializeField] private GameObject raycastOrigin;
-    [SerializeField] private Transform shootOrigin;
-    
-    [Header("Enemy Colliders")]
-    [SerializeField] private Collider2D enemyCollider;
-    [SerializeField] private Collider2D weakEnemyCollider;
-
-    [Header("Animation")] 
-    [SerializeField] private AnimatorEnemyData animatorData;
-    [SerializeField] private Animator animator;
-
-    private bool _isAlive = true;
-    private bool _isHit;
-    private bool _playerDetected;
-    
-    private void Start()
+    protected override void Start()
     {
-        animator.SetBool(animatorData.s_alive, _isAlive);
+        base.Start();
     }
     
     void Update()
@@ -35,7 +14,7 @@ public class Plant : MonoBehaviour, IDamageable
         {
             if (PlayerDetection(rangedData.detectionRange))
             {
-                animator.SetBool(animatorData.s_playerDetected, _playerDetected);
+                animator.SetBool(animatorData.s_playerDetected, _isPlayerDetected);
             }
             else
             {
@@ -54,8 +33,8 @@ public class Plant : MonoBehaviour, IDamageable
         // Si el jugador está dentro del rango y el temporizador entre ataques ha pasado
         if (raycast.collider)
         {
-            _playerDetected = raycast.collider.CompareTag("Player");
-            if (_playerDetected)
+            _isPlayerDetected = raycast.collider.CompareTag("Player");
+            if (_isPlayerDetected)
             {
                 value = true;
                 Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * rangedData.detectionRange, Color.green);
@@ -72,14 +51,14 @@ public class Plant : MonoBehaviour, IDamageable
         
         return value;
     }
-    
-    private void ShootBullet()
+
+    protected override void Shoot()
     {
         var rotation = shootOrigin.rotation;
         rotation *= Quaternion.Euler(0, 0, -90);
         Instantiate(rangedData.bulletPrefab, shootOrigin.position, rotation);
     }
-    
+
     private void EnemyTakeDamage()
     {
         if (_isAlive)

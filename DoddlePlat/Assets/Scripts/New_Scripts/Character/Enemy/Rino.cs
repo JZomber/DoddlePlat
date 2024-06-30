@@ -1,37 +1,22 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Rino : MonoBehaviour, IDamageable
+public class Rino : MoveAbleEnemy, IDamageable
 {
     [Header("Enemy Stats")]
-    [SerializeField] private int lives;
     [SerializeField] private float speed;
     [SerializeField] private float knockbackForce;
+    private float _currentSpeed;
 
     [HideInInspector] public int Lives => lives;
-
-    private float _currentSpeed;
     
     [Header("Detection & Attack")]
     [SerializeField] private LayerMask playerLayer; // Capa del jugador
     [SerializeField] private float detectionRange;
     [SerializeField] private GameObject raycastOrigin;
     
-    [Header("Enemy Colliders")]
-    [SerializeField] private Collider2D enemyCollider;
-    [SerializeField] private Collider2D weakEnemyCollider;
-
-    [Header("Animation")] 
-    [SerializeField] private AnimatorEnemyData animatorData;
-    [SerializeField] private Animator animator;
-
     private const string s_WallHit = "wallHit";
-
-    private bool _isAlive = true;
     private bool _isHit;
-    private bool _playerDetected;
     private bool _isRunning;
     private bool _wallCollided;
     
@@ -42,11 +27,11 @@ public class Rino : MonoBehaviour, IDamageable
     private int _direction = 1;
     
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         _currentSpeed = speed;
         
-        animator.SetBool(animatorData.s_alive, _isAlive);
+        base.Start();
     }
 
     // Update is called once per frame
@@ -56,17 +41,13 @@ public class Rino : MonoBehaviour, IDamageable
         {
             if (PlayerDetection(detectionRange))
             {
-                animator.SetBool(animatorData.s_playerDetected, _playerDetected);
+                animator.SetBool(animatorData.s_playerDetected, _isPlayerDetected);
                 _isRunning = true;
             }
             else
             {
                 animator.SetBool(animatorData.s_playerDetected, false);
             }
-        }
-        else
-        {
-            
         }
     }
     
@@ -88,8 +69,8 @@ public class Rino : MonoBehaviour, IDamageable
         // Si el jugador está dentro del rango y el temporizador entre ataques ha pasado
         if (raycast.collider)
         {
-            _playerDetected = raycast.collider.CompareTag("Player");
-            if (_playerDetected)
+            _isPlayerDetected = raycast.collider.CompareTag("Player");
+            if (_isPlayerDetected)
             {
                 value = true;
                 Debug.DrawRay(raycastOrigin.transform.position, raycastOrigin.transform.right * detectionRange, Color.green);
