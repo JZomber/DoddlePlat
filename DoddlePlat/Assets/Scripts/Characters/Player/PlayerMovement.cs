@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Command;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -36,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
     
     public UnityEvent onLandEvent;
     
-    void Start()
+    private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
@@ -51,18 +52,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount > 0 && !_isGrounded && canMove) // Input de salto
+        if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && canMove) // Input de salto
         {
-            _rigidbody2D.velocity = Vector2.up * jumpForce;
             animator.SetBool("isJumping", true);
             animator.SetBool("isGrounded", false);
-            _extraJumpCount--;
+            
+            var jumpCommand = new PhysicsJumpCommand(jumpForce, _rigidbody2D);
+            EventQueue.Instance.QueueCommands(jumpCommand);
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && _isGrounded && canMove)
+        else if (Input.GetKeyDown(KeyCode.Space) && _extraJumpCount > 0 && !_isGrounded && canMove) // Input doble salto
         {
-            _rigidbody2D.velocity = Vector2.up * jumpForce;
             animator.SetBool("isJumping", true);
             animator.SetBool("isGrounded", false);
+
+            var jumpCommand = new PhysicsJumpCommand(jumpForce, _rigidbody2D);
+            EventQueue.Instance.QueueCommands(jumpCommand);
+            
+            _extraJumpCount--;
         }
         
         if (!canMove)
@@ -72,12 +78,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (canMove)
         {
             _moveInput = Input.GetAxis("Horizontal");
-            _rigidbody2D.velocity = new Vector2(_moveInput * speed, _rigidbody2D.velocity.y);
+            
+            var movementCommand = new PhysicsMovementCommand(_moveInput * speed, _rigidbody2D);
+            EventQueue.Instance.QueueCommands(movementCommand);
             
             animator.SetFloat("Speed", Mathf.Abs(_moveInput));
         }
@@ -112,19 +120,25 @@ public class PlayerMovement : MonoBehaviour
 
     public void KnockBack(GameObject gameObject) // KnockBack cuando el player recibe un ataque enemigo
     {
+        Vector2 knockbackDirection;
+        
         if (_facingRight)
         {
-            _rigidbody2D.velocity = new Vector2(-knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
+            knockbackDirection = new Vector2(-knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
         }
         else 
         {
-            _rigidbody2D.velocity = new Vector2(knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
+            knockbackDirection = new Vector2(knockbackDir.x * gameObject.transform.position.x, knockbackDir.y);
         }
+
+        var knockBackCommand = new PhysicsKnockBackCommand(knockbackDirection, _rigidbody2D);
+        EventQueue.Instance.QueueCommands(knockBackCommand);
     }
 
     public void Bounce() // Cuando el player colisiona con un "WeakPoint" enemigo
     {
-        _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, bounceForce);
+        var bounceCommand = new PhysicsJumpCommand(bounceForce, _rigidbody2D);
+        EventQueue.Instance.QueueCommands(bounceCommand);
     }
 
     public void OnLanding() // Cada vez que toca el suelo o una plataforma
