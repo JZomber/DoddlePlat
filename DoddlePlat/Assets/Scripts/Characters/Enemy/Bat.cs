@@ -7,12 +7,14 @@ public class Bat : MoveAbleEnemy, IDamageable
     [SerializeField] private float speed;
     [SerializeField] private float detectionRange;
 
-    [SerializeField] private GameObject target;
+    private GameObject target;
 
     private float _distance;
 
     protected override void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player");
+        
         base.Start();
     }
 

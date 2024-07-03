@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyClass : MonoBehaviour
+public class EnemyClass : MonoBehaviour, IProduct
 {
     [Header("Enemy Stats")]
     [SerializeField] protected int lives;

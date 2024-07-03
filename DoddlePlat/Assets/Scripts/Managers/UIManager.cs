@@ -36,12 +36,6 @@ public class UIManager : MonoBehaviour
         {
             _playerDamage.OnTakeDamage += HandlerUpdatePlayerUI;
         }
-
-        _rinoScript = FindObjectOfType<Rino>();
-        if (_rinoScript != null)
-        {
-            _rinoScript.OnTakeDamage += HandlerUpdateBossUI;
-        }
     }
 
     private void HandlerUpdatePlayerUI()
@@ -54,9 +48,16 @@ public class UIManager : MonoBehaviour
     {
         Rino boss = FindObjectOfType<Rino>();
         
+        _rinoScript = boss.GetComponent<Rino>();
+        if (_rinoScript != null)
+        {
+            _rinoScript.OnTakeDamage += HandlerUpdateBossUI;
+        }
         
         bossUI.SetActive(true);
         bossLivesText.SetText(_bossLives.ToString());
+        
+        _levelManager.OnBossBattle -= HandlerBossBattle;
     }
     
     private void HandlerUpdateBossUI()
@@ -67,11 +68,6 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
-        if (_levelManager != null)
-        {
-            _levelManager.OnBossBattle -= HandlerBossBattle;
-        }
-        
         if (_playerDamage != null)
         {
             _playerDamage.OnTakeDamage -= HandlerUpdatePlayerUI;

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67bc9266d763b934ea1bc16aab1ffc02, type: 3}
+  m_Name: FactoryInitializer
+  m_EditorClassIdentifier: 
+  batPrefab: {fileID: 2638472956480318269, guid: 757d151436f7ffc45821735616a40248, type: 3}
+  plantPrefab: {fileID: 1624402040268218691, guid: 70589f11b0bc16a478a9ca17b2680640, type: 3}
+  rinoPrefab: {fileID: 8751098710366152717, guid: f1d3c4d1cde20ea4d91ba592d04ba334, type: 3}

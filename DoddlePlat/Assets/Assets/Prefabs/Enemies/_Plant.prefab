@@ -90,7 +90,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3013775820755222168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: -1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -212,13 +212,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 1
-  rangedData: {fileID: 11400000, guid: a031317dfcc858b4a895acb7eb1e389d, type: 2}
-  raycastOrigin: {fileID: 266305221125124967}
-  shootOrigin: {fileID: 7107518797809258955}
   enemyCollider: {fileID: 5701792576972687792}
   weakEnemyCollider: {fileID: 866890877492319088}
   animatorData: {fileID: 11400000, guid: 16b276747396c91429cc85263388874b, type: 2}
   animator: {fileID: 7460493221575151510}
+  rangedData: {fileID: 11400000, guid: a031317dfcc858b4a895acb7eb1e389d, type: 2}
+  raycastOrigin: {fileID: 266305221125124967}
+  shootOrigin: {fileID: 7107518797809258955}
 --- !u!1 &7945421909826712203
 GameObject:
   m_ObjectHideFlags: 0

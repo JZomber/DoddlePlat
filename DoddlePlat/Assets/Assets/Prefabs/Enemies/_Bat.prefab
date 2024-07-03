@@ -212,4 +212,4 @@ MonoBehaviour:
   animator: {fileID: 1319792760299410055}
   speed: 2.2
   detectionRange: 2
-  target: {fileID: 0}
+  target: {fileID: 5581901078718569147, guid: e1e8b81c3aade0b41aaca15ff265ed9f, type: 3}

@@ -117,16 +117,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5936513628992226300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5, y: -1.5, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
-  m_ConstrainProportionsScale: 1
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3704267143768159970}
   - {fileID: 810189946}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &5936513628992226301
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -260,6 +260,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lives: 5
+  enemyCollider: {fileID: 1443190953877549852}
+  weakEnemyCollider: {fileID: 4854577516014494139}
+  animatorData: {fileID: 11400000, guid: 16b276747396c91429cc85263388874b, type: 2}
+  animator: {fileID: 8995006656663023034}
   speed: 10
   knockbackForce: 0.1
   playerLayer:
@@ -267,9 +271,5 @@ MonoBehaviour:
     m_Bits: 512
   detectionRange: -20
   raycastOrigin: {fileID: 810189945}
-  enemyCollider: {fileID: 1443190953877549852}
-  weakEnemyCollider: {fileID: 4854577516014494139}
-  animatorData: {fileID: 11400000, guid: 16b276747396c91429cc85263388874b, type: 2}
-  animator: {fileID: 8995006656663023034}
   _rigidbody2D: {fileID: 6800010905279179968}
   _spriteRenderer: {fileID: 5936513628992226301}

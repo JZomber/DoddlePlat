@@ -5,15 +5,27 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private FactoryInitializer enemyFactoryInitializer;
+
+    [SerializeField] private Transform[] batSpawns;
+    [SerializeField] private Transform[] plantSpawns;
+    [SerializeField] private Transform rinoSpawn;
+    
     void Start()
     {
-        
-    }
+        foreach (var spawns in batSpawns)
+        {
+            var newEnemy = enemyFactoryInitializer.GetEnemy(EnemyFactory.BAT_ENEMY);
+            Instantiate(newEnemy, spawns);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        foreach (var spawns in plantSpawns)
+        {
+            var newEnemy = enemyFactoryInitializer.GetEnemy(EnemyFactory.PLANT_ENEMY);
+            Instantiate(newEnemy, spawns);
+        }
         
+        var enemy = enemyFactoryInitializer.GetEnemy(EnemyFactory.RINO_ENEMY);
+        Instantiate(enemy, rinoSpawn);
     }
 }

@@ -10,8 +10,7 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private GameObject player; //Referencia al player
     private PlayerDamage _playerDamage;
-
-    [SerializeField] private GameObject bossRino;
+    
     private Rino _rinoScript;
     private bool _isBossBattle;
     
@@ -62,12 +61,6 @@ public class LevelManager : MonoBehaviour
         if (_playerDamage != null)
         {
             _playerDamage.OnPlayerKilled += HandlerPlayerKilled;
-        }
-
-        _rinoScript = bossRino.GetComponent<Rino>();
-        if (_rinoScript != null)
-        {
-            _rinoScript.OnBossKilled += HandlerBossKilled;
         }
         
         _indexPlayerWaypoint = 0;
@@ -137,6 +130,12 @@ public class LevelManager : MonoBehaviour
         {
             OnBossBattle?.Invoke();
             _isBossBattle = true;
+            
+            _rinoScript = FindObjectOfType<Rino>();
+            if (_rinoScript != null)
+            {
+                _rinoScript.OnBossKilled += HandlerBossKilled;
+            }
         }
     }
 
